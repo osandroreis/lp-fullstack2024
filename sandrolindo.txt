@@ -1,9 +1,0 @@
-print("Instagram")
-print("Digite seu nome de usuário e senha")
-nomeusuario = input() #lê texto
-senha = input() #lê texto
-
-if(nomeusuario == "marcao_jogador" && senha == "banana123"): 
-    print("Logado com sucesso!")
-else
-    print("Usuario ou senha inválidos")
