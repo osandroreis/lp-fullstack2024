@@ -2,28 +2,29 @@
 <html>
 <body>
 
-<h2>What Can JavaScript Do?</h2>
-
-<p>JavaScript can change HTML attribute values.</p>
-
-<p>In this case JavaScript changes the value of the src (source) attribute of an image.</p>
-
 <img id="myImage" src="pic_bulboff.gif" style="width:100px"> 
 <br>
+<!--Carrega a função que liga/desliga/queima lampada toda vez que o botao for clicado-->
 <button id = "but" onclick="onOffButton()">Ligar/Desligar</button>
 
 <p id="p">estado do botao</p>
 
 <script>
+    let aux = 0; //controla quando lampada for queimada
  	function onOffButton(){   
-        var imagem = document.getElementById('myImage');
-        var p = document.getElementById('p');
-        
-        if (imagem.src.endsWith("pic_bulboff.gif")) {
-        	imagem.src = "pic_bulbon.gif";
+        let imagem = document.getElementById('myImage'); //carrega a tag imagem
+        let p = document.getElementById('p');   //carrega a tag paragrafo
+        //se a lampada estiver desligada e ainda não estiver queimada
+        if (imagem.src.endsWith("pic_bulboff.gif") && aux <= 3) {
+        	imagem.src = "pic_bulbon.gif"; //acenda a lampada
             p.textContent = "Ligado";
-        }else{
-        	imagem.src = "pic_bulboff.gif";
+            aux++; //soma até queimar a lampada
+            if(aux == 4){ //verifica se a lampada ligou 4 vezes
+                imagem.src = "pic_bulboff - Copia.gif"; //carrega imagem lamapda queimada
+                p.textContent = "Queimado";
+            }
+        }else if(aux != 4){ //caso lampada esteja ligada e não esteja queimada
+        	imagem.src = "pic_bulboff.gif"; //carrega lamapda apagada
             p.textContent = "Desligado";
         }
     }
